@@ -26,9 +26,10 @@ module FakeRedis
           multi.set("key2", "2")
           multi.expire("key1", 123)
           multi.mget("key1", "key2")
+          multi.exists("key2")
         end
 
-        expect(transaction).to eq(["OK", "OK", true, ["1", "2"]])
+        expect(transaction).to eq(["OK", "OK", true, ["1", "2"], true])
       end
     end
 

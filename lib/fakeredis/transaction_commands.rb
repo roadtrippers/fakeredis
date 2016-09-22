@@ -48,7 +48,7 @@ module FakeRedis
 
       responses  = queued_commands.map do |cmd|
         begin
-          send(*cmd)
+          clean_reply(send(*cmd))
         rescue => e
           e
         end
